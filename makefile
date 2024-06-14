@@ -20,7 +20,7 @@ py-exec:
 
 #react環境に入る
 re-exec:
-	docker exec -it react-flont bash
+	docker exec -it react-front bash
 
 #reactに新しいライブラリをインストールする (1)react-install -> (2)clear-react-volume -> (3)docker-compose build --no-cache
 react-install:

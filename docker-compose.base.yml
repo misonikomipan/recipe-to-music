@@ -1,0 +1,25 @@
+#プロジェクトセットアップ用のdocker-compose
+services:
+  base:
+    build:
+      context: .
+      dockerfile: ./docker/react/Dockerfile
+      target: base
+    image: node_base
+    volumes:
+      - type: bind
+        source: ./react
+        target: /app
+    working_dir: /app
+    entrypoint: [ "npx", "-y", "create-react-app", "." ]
+    command: [ "--template", "typescript" ]
+  #ライブラリが欲しい場合
+  installer:
+    image: node_base
+    volumes:
+      - type: bind
+        source: ./react
+        target: /app
+    entrypoint: [ "npm", "install" ]
+    command: []
+    #ex command: ["prettier"] など

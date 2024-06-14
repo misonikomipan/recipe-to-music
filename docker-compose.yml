@@ -18,19 +18,19 @@ services:
     build:
       context: .
       target: dev
-      dockerfile: Dockerfile
+      dockerfile: ./docker/react/Dockerfile
     volumes:
       - type: bind
         source: ./react
         target: /app
-      - type: volumes
+      - type: volume
         source: node-modules-volume
         target: /src/node_modules
     ports:
       - 3000:3000
     tty: true
     env_file:
-      - ./dockerfile/react/.env
+      - ./docker/react/.env
     environment:
       - CHOKIDAR_USEPOLLING=true
 volumes:
