@@ -18,14 +18,6 @@ py-exec:
 re-exec:
 	docker exec -it react-front bash
 
-#reactに新しいライブラリをインストールする
-#(1)docker-compose.base.ymlのinstaller -> command欄にライブラリを記入する
-#(2)make react-install
-#(3)meke clear-react-volume
-#(4)docker-compose build --no-cache
-react-install:
-	docker-compose -f docker-compose.base.yml run --rm installer
+#node_moduleのvolumeを削除する
 clear-react-volume:
-	docker volume rm react-front_node-modules-volume
-
-#pythonのライブラリインストール後、docker-compose build --no-cacheを実行してください
+	docker volume rm recipi-to-music_node-modules-volume

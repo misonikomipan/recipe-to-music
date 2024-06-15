@@ -11,15 +11,23 @@ services:
         source: ./react
         target: /app
     working_dir: /app
-    entrypoint: [ "npx", "-y", "create-react-app", "." ]
-    command: [ "--template", "typescript" ]
-  #ライブラリが欲しい場合
+    command: npm create vite@latest . -- --template react-swc-ts
+
+  module-install:
+    image: node_base
+    volumes:
+      - type: bind
+        source: ./react
+        target: /app
+    working_dir: /app
+    command: npm install
+
   installer:
     image: node_base
     volumes:
       - type: bind
         source: ./react
         target: /app
+    working_dir: /app
     entrypoint: [ "npm", "install" ]
     command: [ "axios" ]
-    #ex command: ["prettier"] など
