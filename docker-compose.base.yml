@@ -22,6 +22,15 @@ services:
     working_dir: /app
     command: npm install
 
+  installer-dev:
+    image: node_base
+    volumes:
+      - type: bind
+        source: ./react
+        target: /app
+    working_dir: /app
+    entrypoint: npm install -D
+
   installer:
     image: node_base
     volumes:
@@ -29,5 +38,5 @@ services:
         source: ./react
         target: /app
     working_dir: /app
-    entrypoint: [ "npm", "install" ]
-    command: [ "axios" ]
+    entrypoint: npm install
+    command: axios
