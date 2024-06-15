@@ -21,3 +21,13 @@ re-exec:
 #node_moduleのvolumeを削除する
 clear-react-volume:
 	docker volume rm recipi-to-music_node-modules-volume
+
+#module_install:
+module-install:
+	docker compose -f docker-compose.base.yml run --rm module-install
+#npm install
+react-install:
+	docker compose -f docker-compose.base.yml run --rm installer
+#npm install -D
+react-install-dev:
+	docker compose -f docker-compose.base.yml run --rm installer-dev

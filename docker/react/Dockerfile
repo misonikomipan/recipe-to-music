@@ -5,7 +5,7 @@ FROM node:20.14.0-bookworm-slim as base
 WORKDIR /app
 
 #npmをinstall
-RUN npm install -g npm@latest
+RUN npm install -g npm@10.8.1
 
 #開発環境用イメージ
 #devを継承する
