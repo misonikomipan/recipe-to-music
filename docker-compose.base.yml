@@ -11,15 +11,37 @@ services:
         source: ./react
         target: /app
     working_dir: /app
-    entrypoint: [ "npx", "-y", "create-react-app", "." ]
-    command: [ "--template", "typescript" ]
-  #ライブラリが欲しい場合
+    command: npm create vite@latest . -- --template react-swc-ts
+
+  module-install:
+    build:
+      context: .
+      dockerfile: ./docker/react/Dockerfile
+      target: base
+    image: node_base
+    volumes:
+      - type: bind
+        source: ./react
+        target: /app
+    working_dir: /app
+    command: npm install
+
   installer:
     image: node_base
     volumes:
       - type: bind
         source: ./react
         target: /app
-    entrypoint: [ "npm", "install" ]
-    command: [ "axios" ]
-    #ex command: ["prettier"] など
+    working_dir: /app
+    entrypoint: npm install
+    command: axios react-router-dom
+
+  installer-dev:
+    image: node_base
+    volumes:
+      - type: bind
+        source: ./react
+        target: /app
+    working_dir: /app
+    entrypoint: npm install -D
+    command: vite-tsconfig-paths vitest happy-dom @vitest/coverage-v8 @testing-library/react @testing-library/user-event @testing-library/jest-dom
