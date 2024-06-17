@@ -5,12 +5,12 @@ services:
       context: .
       dockerfile: ./docker/python/Dockerfile
     volumes:
-      - ./python:/app
+      - ./backend:/app
     ports:
       - 5000:5000
     tty: true
     env_file:
-      - ./docker/python/.env
+      - ./docker/backend/.env
     environment:
       - TZ=Asia/Tokyo
   front:
