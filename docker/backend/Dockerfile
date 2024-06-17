@@ -8,5 +8,5 @@ RUN apk update && apk add git bash
 WORKDIR /app
 
 #ライブラリインストール
-COPY ./python/requirements.txt .
+COPY ./backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
