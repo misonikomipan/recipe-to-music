@@ -2,7 +2,7 @@
 FROM python:3.10-alpine3.19
 
 #インストール
-RUN apk update && apk add git bash
+RUN apk update && apk add git bash make
 
 #/appディレクトリ配下で作業
 WORKDIR /app
