@@ -8,19 +8,51 @@ client = Groq(
 
 
 ja_prompt = f"""
-あなたは料理のレシピを提案するAIアシスタントです。ユーザーから材料のリストが与えられるので、その材料を使って作ることができる料理を提案してください。
-また、その料理の作り方も教えてください。
+回答は日本語でおねがいします。
+あなたのタスクは、提供された食材リストに基づいてレシピを提案することです。私が食材を提供するので、その食材を使ったレシピを考えてください。
 
-以下の材料リストが与えられました:
+以下が使用できる食材です:
+
 <ingredients>
 {{INGREDIENTS}}
 </ingredients>
+まず、これらの食材を使用したレシピのアイデアをいくつか考えてください。アイデアを<brainstorming>タグ内に書き出してください。少なくとも3つ、多くても5つのアイデアを出してください。提供された食材をできるだけ多く使うレシピに焦点を当ててください。
+<brainstorming>
+...
+</brainstorming>
+次に、ブレインストーミングに出力した各レシピアイデアについて、それぞれの詳細を以下の形式で書き出してください。
+<recipe>
+<recipe_name>...</recipe_name>
+<recipe_description>
+...
+</recipe_description>
+<ingredients>
+<ingredient>
+<ingredient_name>食材1</ingredient_name>
+<ingredient_amount>...</ingredient_amount>
+</ingredient>
+<ingredient>
+<ingredient_name>食材2</ingredient_name>
+<ingredient_amount>...</ingredient_amount>
+</ingredient>
+...
+</ingredients>
+<instructions>
+1. ステップ1の指示... (調理時間、温度、技術の詳細)
+2. ステップ2の指示...
+...
+</instructions>
+</recipe>
+注意点:
+回答は日本語で提供してください。
+レシピの指示は非常に詳細にしてください。
+調理時間、温度、技術、各材料の切り方、各食材を加えるタイミングなどを明確に記載してください。
+レシピで使用する食材の量は、そのレシピが作る分量に対して適切であることを確認してください。
+ブレインストーミング、スクラッチパッド、最終レシピを含む完全な回答を<result>タグ内に提供してください。
+<result>
+...
+</result>
 
-まず、<scratchpad>タグの中で、与えられた材料から作ることができるレシピを順を追って考えてください。その際、これらの材料以外の食材が必要になるレシピは除外してください。
-
-次に、<recipes>タグの中で、考えたレシピを1行に1工程ずつ出力してください。
-
-出力は日本語でお願いします。
 """
 
 def chat_with_groq():
