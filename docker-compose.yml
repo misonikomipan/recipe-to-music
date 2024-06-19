@@ -3,11 +3,11 @@ services:
     container_name: python-api
     build:
       context: .
-      dockerfile: ./docker/python/Dockerfile
+      dockerfile: ./docker/backend/Dockerfile
     volumes:
       - ./backend:/app
     ports:
-      - 5000:5000
+      - 8000:8000
     tty: true
     env_file:
       - ./docker/backend/.env
