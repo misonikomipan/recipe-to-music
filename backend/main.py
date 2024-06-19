@@ -8,12 +8,14 @@ from XML_parser import parse_recipi
 class Ingredients(BaseModel):
     ingredients: list[str]
 
+
 app = FastAPI()
 
 
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
+
 
 @app.post("/recipes/search-by-ingredients")
 async def search_by_ingredients(ingredeints: Ingredients):
