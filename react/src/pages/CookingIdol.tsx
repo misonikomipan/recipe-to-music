@@ -32,9 +32,12 @@ const Cookingidol = () => {
   useEffect(() => {
     const fetchData = async () => {
       try{// レシピデータの取得
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/recipes`);
+        //const response = await axios.get('http://localhost:8000/');
+        const response = await axios.post(`http://localhost:8000/recipes/search-by-ingredients`,{
+          ingredients:["じゃがいも","にんじん"]
+        });
         setcontent(response.data);
-        setmaikingcontent(response.data)
+        //setmaikingcontent(response.data)
       }catch(error){
         console.error('リクエストエラー:', error); 
       }
