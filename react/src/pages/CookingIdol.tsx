@@ -36,7 +36,12 @@ const Cookingidol = () => {
         const response = await axios.post(`http://localhost:8000/recipes/search-by-ingredients`,{
           ingredients:["じゃがいも","にんじん"]
         });
-        setcontent(response.data);
+        const apiRecipes = response.data.recipes.map((recipe: any) => ({
+          img: '', 
+          title: recipe.recipe_name,
+          text: recipe.recipe_description,
+        }));
+        setcontent(apiRecipes);
         //setmaikingcontent(response.data)
       }catch(error){
         console.error('リクエストエラー:', error); 
