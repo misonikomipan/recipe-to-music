@@ -6,6 +6,7 @@ services:
       dockerfile: ./docker/backend/Dockerfile
     volumes:
       - ./backend:/app
+      - ~/.aws/:/root/.aws
     ports:
       - 8000:8000
     tty: true
