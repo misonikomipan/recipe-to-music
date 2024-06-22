@@ -8,5 +8,5 @@ RUN apk update && apk add git bash make
 WORKDIR /app
 
 #ライブラリインストール
-COPY ./backend/requirements.txt .
+COPY ./suno_api/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
