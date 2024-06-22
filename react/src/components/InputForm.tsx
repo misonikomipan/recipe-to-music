@@ -26,7 +26,7 @@ export const InputForm: React.FC<InputFormProps> = ({ setContent }) => {
 
     try {// レシピデータの取得
       //console.log("fetch開始")
-      const response = await axios.post(`http://localhost:8000/recipes/search-by-ingredients`, {
+      const response = await axios.post(`https://blooming-fjord-37050-ff0ae84ff432.herokuapp.com/recipes/search-by-ingredients`, {
         ingredients: ingredients_list
       });
       const apiRecipes = response.data.recipes.map((recipe: any) => ({
