@@ -49,7 +49,7 @@ export const MakingDisplay: React.FC<MakingDisplayProps> = ({ maikingcontent }) 
               <li key={i}>{instruction}</li>
             ))}
           </ol>
-          <MusicGenerateButton title={item.title} onReceiveData={handleReceiveData} url={'react/public/Sunlit_Puddles.mp3'} />
+          <MusicGenerateButton title={item.title} recipe={item.instructions.join()} onReceiveData={handleReceiveData} speech_file_name={'react/public/Sunlit_Puddles.mp3'} />
           {musicUrl && <MusicPlayer musicPath={musicUrl} />}
         </div>
       ))}

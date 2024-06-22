@@ -48,7 +48,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ musicPath }) => {
 
   return (
     <div>
-        <audio src={musicPath}></audio>
+        
         <p>音楽を再生中...</p>
     </div>
   );
