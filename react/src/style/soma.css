@@ -11,7 +11,8 @@
     font-size: 16px;
 }
 .text{
-    font-size:12px
+    font-size:12px;
+    text-align: left;
 }
 .title-jp{
     font-family: 'Noto Sans JP', sans-serif;
@@ -22,7 +23,7 @@
     font-weight: 400;
 }
 .center{
-    text-align: center;
+    margin:0 auto;
 }
 h1{
     margin: 10px;
@@ -50,6 +51,13 @@ h1{
     border-radius: 5px;
     background-color: #F2C9C9;
     font-size: 24px;
+    transition: opacity .1s, transform .1s;
+}
+.button-1:hover{
+  background-color: #ffafaf;
+}
+.button-1:active{
+    transform: scale(.98);
 }
 .itemimg{
     width: 154px;
@@ -65,16 +73,59 @@ h1{
     margin-top:10px;
 }
 .content{
+    border: 1px solid black;
     margin: 0 auto 20px;
+    padding: 5px 10px 20px 10px;
     display: flex;
     width: 410px;
-    height:100px;
+    height:auto;
     background-color: #F2C9C9;
     border-radius: 8px;
 }
-h3{
-    font-size: 32px;
+.content h2{
+    font-size: 16x;
+    text-decoration: underline;
 }
+
 .lastbutton{
     margin-top:30px;
+}
+
+.content:hover {
+    background-color: #ffafaf;
+    transition: opacity .1s, transform .1s;
+}
+
+.content:active{
+    transform: scale(.98);
+}
+.two{
+    width: 50%;
+}
+
+.wrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+li{
+    list-style: none;
+}
+.width{
+    width:410px;
+}
+.flex{
+    display: flex;
+}
+.textcenter{
+    text-align: center;
+}
+.making{
+    border: 1px solid black;
+    padding: 5px 10px 20px 10px;
+    border-radius: 8px;
+    background-color: #fcd9d9;
+}
+h3{
+    font-size: 16x;
+    border-bottom: 1px solid #333;
 }
