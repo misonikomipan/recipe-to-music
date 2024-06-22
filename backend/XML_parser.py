@@ -21,6 +21,15 @@ class RecipeBook(BaseModel):
     recipes: List[Recipe]
 
 
+def parse_description(xml_data):
+    # create ElementTree object
+    root = ET.fromstring(xml_data)
+
+    # parse brainstorming element
+    prompt = root.find('prompt').text.strip()   
+    return prompt
+
+
 def parse_recipi(xml_data):
     # create ElementTree object
     root = ET.fromstring(xml_data)
@@ -169,5 +178,18 @@ def main():
     res = parse_recipi(xml_data)
     print(res)
 
+
+def main2():
+    txt = '''
+    <result>
+    Understood
+    <prompt>
+    A photograph of Shogayaki, a popular Japanese dish. The image features slices of pork tenderly fried in a hot skillet, showcasing a crispy exterior and a juicy interior. The pork is seasoned with finely sliced ginger and a light soy sauce-based glaze. The dish is served on a white plate, accompanied by a side of fresh green salad, enhancing the homey and appetizing atmosphere. The setting includes a warm, well-lit dining table, evoking a sense of a comforting meal at home.
+    </prompt>
+    </result>
+    '''
+    res = parse_description(txt)
+    print(res)
+
 if __name__ == "__main__":
-    main()
+    main2()
