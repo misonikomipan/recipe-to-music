@@ -34,7 +34,7 @@ services:
         target: /app
     working_dir: /app
     entrypoint: npm install
-    command: axios react-router-dom
+    command: axios react-router-dom howler
 
   installer-dev:
     image: node_base

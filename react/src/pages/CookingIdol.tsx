@@ -1,6 +1,7 @@
 import { Header } from '@/components/Header'
 import { InputForm } from '@/components/InputForm';
 import { MakingDisplay } from '@/components/MakingDisplay';
+import { MusicPlayer } from '@/components/MusicPlayer';
 import { RecipiDisplay } from '@/components/RecipiDisplay'
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
