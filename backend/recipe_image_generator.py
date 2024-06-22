@@ -11,10 +11,11 @@ from XML_parser import parse_description
 
 def recipe_description_generator(recipe_name):
     groq_client = Groq(
-    api_key=os.environ.get("GROQ_API_KEY"),
+        api_key=os.environ.get("GROQ_API_KEY"),
     )
     prompt = f"""
-        回答は英語でおねがいします。あなたのタスクは、提供された料理名に基づいた画像をstable diffusionで生成するためのプロンプトを提案することです。私が料理名を提供するので、料理名から画像を生成するプロンプトを生成してください
+        回答は英語でおねがいします。あなたのタスクは、提供された料理名に基づいた画像をstable diffusionで生成するためのプロンプトを提案することです。
+        私が料理名を提供するので、料理名から画像を生成するプロンプトを生成してください
         以下が使用できる食材です:
         <repcipe_name>{recipe_name}</repcipe_name>
         まず、料理名から画像を生成するプロンプトを生成してください。プロンプトを<prompt>タグ内に書き出してください。
@@ -27,7 +28,7 @@ def recipe_description_generator(recipe_name):
         ...
         </result>
         """
-    
+
     # Add the user's message to the chat history
     chat_history = [{"role": "user", "content": prompt}]
 
@@ -44,13 +45,13 @@ def recipe_description_generator(recipe_name):
 
     # Print the incremental deltas returned by the LLM.
     ai_response = ""
-    print(f"responce: ", end="")
+    print("responce: ", end="")
     for chunk in stream:
         if chunk.choices[0].delta.content:
             ai_response += chunk.choices[0].delta.content
             print(chunk.choices[0].delta.content, end="")
         # last_time = time.time()
-    
+
     recipe_image_prompt = parse_description(ai_response)
     return recipe_image_prompt
 
@@ -65,7 +66,7 @@ def recipe_image_generator(recipe_name):
     contentType = 'application/json'
     prompt = recipe_description_generator(recipe_name)
     seed = random.randint(0, 1000000)
-    
+
     # Format the request payload using the model's native structure.
     native_request = {
         "text_prompts": [{"text": prompt}],
