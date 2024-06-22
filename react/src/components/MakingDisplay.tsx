@@ -1,47 +1,58 @@
-//音楽にするまで
-import React from 'react'
-import '@/style/soma.css'
+import React, { useState } from 'react';
+import '@/style/soma.css';
+import { MusicGenerateButton } from './MusicGenerateButton';
+import { MusicPlayer } from './MusicPlayer';
 
-  
-  type IngredientData = {
-    name: string;
-    amount: string;
-  };
-  
-  type ContentData = {
-    title: string;//レシピ名
-    text: string;//レシピの説明
-    ingredients: IngredientData[];//材料名
-    instructions: string[];//手順
+type IngredientData = {
+  name: string;
+  amount: string;
+};
+
+type ContentData = {
+  title: string;
+  text: string;
+  ingredients: IngredientData[];
+  instructions: string[];
+};
+
+type MakingDisplayProps = {
+  maikingcontent: ContentData[];
+};
+
+type MusicData = {
+  music: string;
+};
+
+export const MakingDisplay: React.FC<MakingDisplayProps> = ({ maikingcontent }) => {
+  const [musicUrl, setMusicUrl] = useState<string>('');
+
+  const handleReceiveData = (url: string) => {
+    setMusicUrl(url);
   };
 
-  type MakingDisplayProps = {
-    maikingcontent: ContentData[];
-  };
-
-export const MakingDisplay: React.FC<MakingDisplayProps> = ({maikingcontent}) => {
-    return(
-        <>
+  return (
+    <>
       {maikingcontent.map((item, index) => (
-        <div>
-          <h3 className='center title-jp' key={index}>{item.title}</h3>
+        <div key={index}>
+          <h3 className="center title-jp">{item.title}</h3>
           <p>{item.text}</p>
           <hr />
-          <h3 className='center title-jp'>材料</h3>
+          <h3 className="center title-jp">材料</h3>
           <ul>
             {item.ingredients.map((ingredient, i) => (
               <li key={i}>{ingredient.name}: {ingredient.amount}</li>
             ))}
           </ul>
-          <h3 className='center title-jp'>手順</h3>
+          <h3 className="center title-jp">手順</h3>
           <ol>
             {item.instructions.map((instruction, i) => (
               <li key={i}>{instruction}</li>
             ))}
           </ol>
+          <MusicGenerateButton title={item.title} onReceiveData={handleReceiveData} url={'react/public/Sunlit_Puddles.mp3'} />
+          {musicUrl && <MusicPlayer musicPath={musicUrl} />}
         </div>
       ))}
-        <button className="button-1 lastbutton text-jp">レシピ検索</button>
-        </>
-    )
-}
+    </>
+  );
+};
