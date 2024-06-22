@@ -56,7 +56,6 @@ async def recipe_image(recipe_title: str, return_file_name: str = "recipe_image.
             return {"error": "File not found"}
 
 
-
 @app.post("/recipes/recipe-to-speech")
 async def recipe_to_speech(recipe: str, speech_file_name: str):
     file_path = "speech.mp3"
