@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import '@/style/soma.css';
 
 
 
@@ -34,7 +35,7 @@ export const MusicGenerateButton: React.FC<MusicGenerateButtonProps> = ({ title,
     };
 
     return (
-        <button onClick={handleSubmit}>
+        <button className="up-margin button-1" onClick={handleSubmit}>
             音楽生成
         </button>
     );
