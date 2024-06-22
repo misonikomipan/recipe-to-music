@@ -35,5 +35,17 @@ services:
       - ./react/.env
     environment:
       - CHOKIDAR_USEPOLLING=true
+  suno:
+    container_name: suno
+    build:
+      context: .
+      dockerfile: ./docker/suno/Dockerfile
+    volumes:
+      - ./suno_api:/app
+    env_file:
+      - ./suno_api/.env
+    command: uvicorn api:app --host 0.0.0.0 --port 8080
+    ports:
+      - 8080:8080
 volumes:
   node-modules-volume:
