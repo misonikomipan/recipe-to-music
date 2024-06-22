@@ -57,7 +57,7 @@ export const InputForm: React.FC<InputFormProps> = ({ setContent }) => {
       />
       <button
         type="submit"
-        className="submit-button width"
+        className="submit-button"
       >
         レシピ検索
       </button>

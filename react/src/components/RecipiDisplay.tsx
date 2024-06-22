@@ -2,6 +2,7 @@
 import React,{useState, useEffect} from 'react';
 import '@/pages/CookingIdol'
 import '@/style/soma.css'
+import '@/style/inori.css'
 import axios from 'axios';
 
 type ContentData = {

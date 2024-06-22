@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-
+import '@/style/inori.css'
 
 
 type MusicGenerateButtonProps = {
@@ -34,7 +34,7 @@ export const MusicGenerateButton: React.FC<MusicGenerateButtonProps> = ({ title,
     };
 
     return (
-        <button onClick={handleSubmit}>
+        <button onClick={handleSubmit} className="music-generate-button">
             音楽生成
         </button>
     );
