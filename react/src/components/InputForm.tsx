@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '@/style/inori.css'
+interface IngredientData {
+  name: string;
+  amount: string;
+}
 
+interface ContentData {
+  title: string;
+  text: string;
+  ingredients: IngredientData[];
+  instructions: string[];
+}
 interface InputFormProps {
-  setContent: (ingredients: string) => void;
+  setContent: (ingredients: ContentData[]) => void;
 }
 
 export const InputForm: React.FC<InputFormProps> = ({ setContent }) => {
@@ -20,8 +30,13 @@ export const InputForm: React.FC<InputFormProps> = ({ setContent }) => {
         ingredients: ingredients_list
       });
       const apiRecipes = response.data.recipes.map((recipe: any) => ({
-        title: recipe.recipe_name,
-        text: recipe.recipe_description,
+        title: recipe.recipe_name,//レシピ名
+        text: recipe.recipe_description,//レシピの説明
+        ingredients: recipe.ingredients.map((ing: any) => ({
+          name: ing.ingredient_name,
+          amount: ing.ingredient_amount
+        })),
+        instructions:recipe.instructions//手順
       }));
       setContent(apiRecipes);
       //console.log("fetch終了")
@@ -49,5 +64,3 @@ export const InputForm: React.FC<InputFormProps> = ({ setContent }) => {
     </form>
   );
 };
-
-export default InputForm;
