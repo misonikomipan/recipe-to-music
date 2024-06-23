@@ -17,14 +17,21 @@ type ContentData = {
   instructions: string[];
 };
 
-type MakingDisplayProps = {
-  maikingcontent: ContentData[];
+type ImageUrlObj = {
+  sample: string;
+  newProp?: string;  // 新しいプロパティをオプショナル（必須ではない）として追加
 };
 
-export const MakingDisplay: React.FC<MakingDisplayProps> = ({ maikingcontent }) => {
+type MakingDisplayProps = {
+  makingContent: ContentData[];
+  recipeImageUrls: ImageUrlObj;
+};
+
+
+
+export const MakingDisplay: React.FC<MakingDisplayProps> = ({ makingContent, recipeImageUrls }) => {
   const [musicUrl, setMusicUrl] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
   const handleReceiveData = (url: string) => {
     setMusicUrl(url);
     setIsLoading(false);
@@ -36,8 +43,9 @@ export const MakingDisplay: React.FC<MakingDisplayProps> = ({ maikingcontent }) 
 
   return (
     <>
-      {maikingcontent.map((item, index) => (
+      {makingContent.map((item, index) => (
         <div key={index}>
+          {recipeImageUrls[item.title] && <img src={recipeImageUrls[item.title]}></img>}
           <div className='making-container'>
             <h3 className="center title-jp">{item.title}</h3>
             <p>{item.text}</p>

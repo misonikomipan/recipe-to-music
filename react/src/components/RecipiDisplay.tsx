@@ -22,13 +22,19 @@ type TitleData = {
   title: string;
 };
 
+type ImageUrlObj = {
+  sample: string;
+  newProp?: string;  // 新しいプロパティをオプショナル（必須ではない）として追加
+};
+
 type RecipiDisplayProps = {
   content: ContentData[];
+  recipeImageUrls: ImageUrlObj;
   onReceiveData: (data: TitleData[]) => void;
   isLoading: boolean;
 };
 
-export const RecipiDisplay: React.FC<RecipiDisplayProps> = ({ content, onReceiveData, isLoading }) => {
+export const RecipiDisplay: React.FC<RecipiDisplayProps> = ({ content, recipeImageUrls, onReceiveData, isLoading }) => {
   const handleClick = (index: number) => {
     const { title } = content[index];
     onReceiveData([{ title }]); // 取得したデータを親コンポーネントに渡す

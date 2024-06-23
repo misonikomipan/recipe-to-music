@@ -22,18 +22,43 @@ type TitleData = {
   title: string;
 };
 
+type ImageUrlObj = {
+  sample: string;
+  newProp?: string;  // 新しいプロパティをオプショナル（必須ではない）として追加
+};
+
+
 const Cookingidol = () => {
   const [content, setContent] = useState<ContentData[]>([]);
-  const [maikingcontent, setmaikingcontent] = useState<ContentData[]>([]);
+  const [makingContent, setMakingContent] = useState<ContentData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [searched,setSearched] = useState<boolean>(false);
+  const [recipeImageUrls, setRecipeImageUrls] = useState<ImageUrlObj>({sample:"hoge"})
 
-  const handleReceiveData = (data: TitleData[]) => {
+  const handleReceiveData = async (data: TitleData[]) => {
     const selectedRecipe = content.find(recipe => recipe.title === data[0].title);
     if (selectedRecipe) {
-      setmaikingcontent([selectedRecipe]);
-    }
-  };
+      setMakingContent([selectedRecipe]);
+      if (selectedRecipe.title in recipeImageUrls) {
+        return;
+      } else {
+          try {
+            console.log("start")
+            const response = await axios.get(`https://blooming-fjord-37050-ff0ae84ff432.herokuapp.com/recipes/sample_image`);
+            const image_base64 = response.data.recipe_image_base64;
+            const image_url = "data:image/jpeg;base64," + image_base64;
+            setRecipeImageUrls(prevState => ({
+              ...prevState,
+              [selectedRecipe.title]: image_url  // `newProp`を追加
+            }))
+            console.log(recipeImageUrls)
+          } catch (error) {
+            console.error('リクエストエラー:', error);
+          }
+        }
+      }
+    };
+  
 
   const handleGenerateInput = () => {
     setIsLoading(false);
@@ -46,8 +71,8 @@ const Cookingidol = () => {
       {
         searched && (
           <>
-            <RecipiDisplay content={content} onReceiveData={handleReceiveData} isLoading={isLoading} />
-            <MakingDisplay maikingcontent={maikingcontent} />
+            <RecipiDisplay content={content} recipeImageUrls={recipeImageUrls} onReceiveData={handleReceiveData} isLoading={isLoading} />
+            <MakingDisplay makingContent={makingContent} recipeImageUrls={recipeImageUrls} />
           </>
         )
       }
