@@ -1,7 +1,7 @@
 import boto3
 
 def text_to_speech(text, output_file_path):
-    polly = boto3.client('polly')
+    polly = boto3.client('polly', region_name='us-east-1')
     
     try:
         # Pollyにリクエストを送信

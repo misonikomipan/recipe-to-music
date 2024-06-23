@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from recipi_generator import generate_recipi
+from recipe_image_generator import recipe_image_generator
 from XML_parser import parse_recipi
 from text_to_speech import text_to_speech
 
@@ -41,6 +42,18 @@ async def search_by_ingredients(ingredeints: Ingredients):
     recipis_xml = generate_recipi(ingredeints.ingredients)
     recipis_json = parse_recipi(recipis_xml)
     return recipis_json
+
+
+@app.post("/recipes/recipe-image")
+async def recipe_image(recipe_title: str, return_file_name: str = "recipe_image.png", is_base64: bool = False):
+    file_path, recipe_image_base64 = recipe_image_generator(recipe_title)
+    if is_base64:
+        return {"recipe_image_base64": recipe_image_base64}
+    else:
+        if os.path.exists(return_file_name):
+            return FileResponse(file_path, media_type='image/png', filename=f"{return_file_name}.png")
+        else:
+            return {"error": "File not found"}
 
 
 @app.post("/recipes/recipe-to-speech")

@@ -7,8 +7,8 @@ type MusicPlayerProps = {
 
 export const MusicPlayer: React.FC<MusicPlayerProps> = ({ musicPath }) => {
   return (
-    <div className="player-container">
-        <audio src={musicPath} controls></audio>
+    <div >
+        <audio className="player-container" src={musicPath} controls></audio>
     </div>
   );
 };
