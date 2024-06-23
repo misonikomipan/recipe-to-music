@@ -1,11 +1,13 @@
 //ヘッダー
 import React from 'react';
 import '@/style/soma.css'
+import '@/style/inori.css'
+
 
 export const Header = () => {
   return( 
   <header className="center width">
-    <h1 className="title-jp textcenter">クッキングアイドル</h1>
+    <img src="logo.png" className='logo-image'/>
     <hr />
   </header>
   )
