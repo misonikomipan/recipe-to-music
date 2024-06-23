@@ -37,31 +37,8 @@ export const MakingDisplay: React.FC<MakingDisplayProps> = ({ maikingcontent }) 
   return (
     <>
       {maikingcontent.map((item, index) => (
-        <>
-          <div key={index} className='making-container'>
-            <h3 className="center title-jp">{item.title}</h3>
-            <p>{item.text}</p>
-            
-            <h3 className="center title-jp">材料</h3>
-            <ul className="ingredients-list">
-              {item.ingredients.map((ingredient, i) => (
-                <li key={i}>{ingredient.name}: {ingredient.amount}</li>
-              ))}
-            </ul>
-            <h3 className="center title-jp">手順</h3>
-            <ol className="process-list">
-              {item.instructions.map((instruction, i) => (
-                <li key={i}>{instruction}</li>
-              ))}
-            </ol>
-          </div>
-          <div>
-            <MusicGenerateButton title={item.title} recipe={item.instructions.join()} onReceiveData={handleReceiveData} speech_file_name={'react/public/Sunlit_Puddles.mp3'} />
-            {musicUrl && <MusicPlayer musicPath={musicUrl} />}
-          </div>
-        </>
-        
-          <div key={index} className='making-container'>
+        <div key={index}>
+          <div className='making-container'>
             <h3 className="center title-jp">{item.title}</h3>
             <p>{item.text}</p>
             
@@ -92,7 +69,7 @@ export const MakingDisplay: React.FC<MakingDisplayProps> = ({ maikingcontent }) 
               musicUrl && <MusicPlayer musicPath={musicUrl} />
             )}
           </div>
-        </div>\
+        </div>
       ))}
     </>
   );
