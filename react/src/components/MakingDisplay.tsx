@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '@/style/soma.css';
+import '@/style/inori.css';
 import { MusicGenerateButton } from './MusicGenerateButton';
 import { MusicPlayer } from './MusicPlayer';
 import { SkeletonGallery } from './SkeletonGallery';

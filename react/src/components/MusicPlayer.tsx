@@ -1,5 +1,5 @@
 import React from 'react';
-import '@/style/soma.css'
+import '@/style/inori.css'
 
 type MusicPlayerProps = {
   musicPath: string;
@@ -8,7 +8,7 @@ type MusicPlayerProps = {
 export const MusicPlayer: React.FC<MusicPlayerProps> = ({ musicPath }) => {
   return (
     <div >
-        <audio className="center flex" src={musicPath} controls></audio>
+        <audio className="player-container" src={musicPath} controls></audio>
     </div>
   );
 };
