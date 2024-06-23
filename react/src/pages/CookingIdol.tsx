@@ -44,7 +44,7 @@ const Cookingidol = () => {
       } else {
           try {
             console.log("start")
-            const response = await axios.get(`https://blooming-fjord-37050-ff0ae84ff432.herokuapp.com/recipes/sample_image`);
+            const response = await axios.post(`https://blooming-fjord-37050-ff0ae84ff432.herokuapp.com/recipes/recipe-image?recipe_title=${selectedRecipe.title}&is_base64=true`);
             const image_base64 = response.data.recipe_image_base64;
             const image_url = "data:image/jpeg;base64," + image_base64;
             setRecipeImageUrls(prevState => ({
