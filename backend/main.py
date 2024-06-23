@@ -58,6 +58,16 @@ async def recipe_image(recipe_title: str, return_file_name: str = "recipe_image.
             return {"error": "File not found"}
 
 
+@app.get("/recipes/sample_image")
+async def sample_image_base64():
+    # sample_image_base54.txtを読み取る
+    with open("sample_image_base64.txt", "r") as f:
+        sample_image_base64 = f.read()
+        print(sample_image_base64)
+    return {"recipe_image_base64": sample_image_base64}
+
+
+
 @app.post("/recipes/recipe-to-speech")
 async def recipe_to_speech(recipe: str, speech_file_name: str):
     file_path = "speech.mp3"
@@ -66,3 +76,4 @@ async def recipe_to_speech(recipe: str, speech_file_name: str):
         return FileResponse(file_path, media_type='audio/mpeg', filename=speech_file_name)
     else:
         return {"error": "File not found"}
+
