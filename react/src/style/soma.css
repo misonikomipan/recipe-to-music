@@ -198,7 +198,7 @@ li{
     animation: dot-blink 1s steps(1, end) infinite;
   }
   .recipe-container {
-    background-color: #ffe0e0;
+    background-color: #172c6649;
     border: 2px solid #000;
     border-radius: 10px;
     padding: 10px;
@@ -207,7 +207,7 @@ li{
   }
   
   .skeleton {
-    background-color: #F2C9C9;
+    background-color: #172c6628;
     border-radius: 5px;
     margin: 5px 0;
   }
@@ -232,7 +232,7 @@ li{
   }
   
   .skeleton {
-    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background: linear-gradient(90deg, #e0e0e0 10%, #f0f0f0 30%, #e0e0e0 50%);
     background-size: 2000px 100%;
     animation: shimmer 2s infinite;
   }

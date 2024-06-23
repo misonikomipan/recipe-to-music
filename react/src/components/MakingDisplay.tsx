@@ -45,9 +45,10 @@ export const MakingDisplay: React.FC<MakingDisplayProps> = ({ makingContent, rec
     <>
       {makingContent.map((item, index) => (
         <div key={index}>
-          {recipeImageUrls[item.title] && <img src={recipeImageUrls[item.title]}></img>}
+          
           <div className='making-container'>
             <h3 className="center title-jp">{item.title}</h3>
+            {recipeImageUrls[item.title] && <img src={recipeImageUrls[item.title]} className='recipe-image'></img>}
             <p>{item.text}</p>
             
             <h3 className="center title-jp">材料</h3>
