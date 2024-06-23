@@ -24,7 +24,7 @@ type TitleData = {
 
 const Cookingidol = () => {
   const [content, setContent] = useState<ContentData[]>([]);
-  const [makingContents, setMakingContent] = useState<ContentData[]>([]);
+  const [makingContent, setMakingContent] = useState<ContentData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [searched,setSearched] = useState<boolean>(false);
 
