@@ -17,12 +17,18 @@ type ContentData = {
 };
 
 type MakingDisplayProps = {
-  maikingcontent: ContentData[];
+  makingContent: ContentData[];
 };
 
-export const MakingDisplay: React.FC<MakingDisplayProps> = ({ maikingcontent }) => {
+interface ImageUrlObj {
+  [prop: string]: any
+}
+
+
+export const MakingDisplay: React.FC<MakingDisplayProps> = ({ makingContent }) => {
   const [musicUrl, setMusicUrl] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [recipeImageUrl, setRecipeImageUrl] = useState<ImageUrlObj>({})
 
   const handleReceiveData = (url: string) => {
     setMusicUrl(url);
@@ -35,8 +41,9 @@ export const MakingDisplay: React.FC<MakingDisplayProps> = ({ maikingcontent }) 
 
   return (
     <>
-      {maikingcontent.map((item, index) => (
+      {makingContent.map((item, index) => (
         <div key={index}>
+<<<<<<< Updated upstream
           <div className='making width center'>
             <h3 className='center title-jp textcenter'>{item.title}</h3>
             <p className='text center width'>{item.text}</p>
@@ -56,6 +63,25 @@ export const MakingDisplay: React.FC<MakingDisplayProps> = ({ maikingcontent }) 
                 ))}
               </ol>
             </div>
+=======
+          {recipeImageUrl[item.title] && <img src={recipeImageUrl[item.title]}></img>}
+          <div className='making-container'>
+            <h3 className="center title-jp">{item.title}</h3>
+            <p>{item.text}</p>
+            
+            <h3 className="center title-jp">材料</h3>
+            <ul className="ingredients-list">
+              {item.ingredients.map((ingredient, i) => (
+                <li key={i}>{ingredient.name}: {ingredient.amount}</li>
+              ))}
+            </ul>
+            <h3 className="center title-jp">手順</h3>
+            <ol className="process-list">
+              {item.instructions.map((instruction, i) => (
+                <li key={i}>{instruction}</li>
+              ))}
+            </ol>
+>>>>>>> Stashed changes
           </div>
           <MusicGenerateButton 
             title={item.title} 

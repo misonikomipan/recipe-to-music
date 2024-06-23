@@ -24,14 +24,15 @@ type TitleData = {
 
 const Cookingidol = () => {
   const [content, setContent] = useState<ContentData[]>([]);
-  const [maikingcontent, setmaikingcontent] = useState<ContentData[]>([]);
+  const [makingContents, setMakingContent] = useState<ContentData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [searched,setSearched] = useState<boolean>(false);
 
   const handleReceiveData = (data: TitleData[]) => {
     const selectedRecipe = content.find(recipe => recipe.title === data[0].title);
+    console.log(selectedRecipe)
     if (selectedRecipe) {
-      setmaikingcontent([selectedRecipe]);
+      setMakingContent([selectedRecipe]);
     }
   };
 
@@ -47,7 +48,7 @@ const Cookingidol = () => {
         searched && (
           <>
             <RecipiDisplay content={content} onReceiveData={handleReceiveData} isLoading={isLoading} />
-            <MakingDisplay maikingcontent={maikingcontent} />
+            <MakingDisplay makingContent={makingContent} />
           </>
         )
       }
