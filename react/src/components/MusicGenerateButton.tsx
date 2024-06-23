@@ -1,4 +1,5 @@
 import axios from 'axios';
+import '@/style/inori.css'
 import React, { useState } from 'react';
 import '@/style/soma.css';
 
@@ -36,7 +37,7 @@ export const MusicGenerateButton: React.FC<MusicGenerateButtonProps> = ({ title,
     };
 
     return (
-        <button className="up-margin button-1" onClick={handleSubmit} disabled={isDelayed}>
+        <button className="music-generate-button" onClick={handleSubmit} disabled={isDelayed}>
           {isDelayed ? (
             <div className="loading-text">
               <span>生成中</span><span className="dot-animation"></span>
