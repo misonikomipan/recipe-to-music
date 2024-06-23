@@ -2,6 +2,7 @@ import os
 import json
 import random
 import base64
+import xml.etree.ElementTree
 import boto3
 from groq import Groq
 from io import BytesIO
@@ -45,14 +46,16 @@ def recipe_description_generator(recipe_name):
 
     # Print the incremental deltas returned by the LLM.
     ai_response = ""
-    print("responce: ", end="")
     for chunk in stream:
         if chunk.choices[0].delta.content:
             ai_response += chunk.choices[0].delta.content
-            print(chunk.choices[0].delta.content, end="")
         # last_time = time.time()
-
-    recipe_image_prompt = parse_description(ai_response)
+    try:
+        recipe_image_prompt = parse_description(ai_response)
+    except xml.etree.ElementTree.ParseError as e:
+        print(ai_response)
+        raise e
+    
     return recipe_image_prompt
 
 

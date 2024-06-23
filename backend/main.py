@@ -17,6 +17,8 @@ class Ingredients(BaseModel):
 origins = [
     "http://localhost",
     "http://localhost:5173",
+    "http://0.0.0.0",
+    "http://0.0.0.0:5173",
 ]
 
 
