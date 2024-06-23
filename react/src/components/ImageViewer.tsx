@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import '@/style/soma.css';
+import '@/style/inori.css';
 
 type ImageViewerProps = {
     recipe_name: string;
@@ -53,7 +53,7 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({ recipe_name }) => {
             )}
             </button>
             {imageSrc && (
-                <img src={imageSrc[recipe_name]} alt="レシピ画像" />
+                <img className='recipi-image' src={imageSrc[recipe_name]} alt="レシピ画像"  />
             )}
         </>
     );

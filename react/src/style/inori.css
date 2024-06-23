@@ -104,6 +104,12 @@ header {
 
 /*MakingDisplay*/
 
+.recipe-image {
+  display: flex;
+  width: 350px;
+  margin: 10px auto;
+}
+
 .making-container {
   margin: 50px auto 50px;
   width: 350px;
