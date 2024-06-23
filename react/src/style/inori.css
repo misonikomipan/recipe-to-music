@@ -164,13 +164,12 @@ body {
 
 /* MusicPlayer */
 
-.player-container {
-  margin: 10px auto 100px;
-}
 
-.player-container audio {
+
+audio {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  margin: 10px auto 100px;
 }
+
