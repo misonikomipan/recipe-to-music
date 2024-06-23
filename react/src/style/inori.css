@@ -19,7 +19,12 @@ body {
 
 header {
   position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: #ebe8e2;
+  text-align: center;
+  z-index: 1000;
 }
 
 .logo-image {
