@@ -1,0 +1,192 @@
+/* FirstItem.module.css */
+/* @/style/inori.css */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap');
+
+*{
+  margin: 0;
+  padding:0;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 400;
+  color: #001858;
+}
+
+body {
+  background-color: #ebe8e2;
+  
+}
+
+ /*Header*/
+
+header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ebe8e2;
+  text-align: center;
+  z-index: 1000;
+}
+
+.logo-image {
+  display: block;
+  margin: 8px auto 5px;
+}
+
+ /*InputForm*/
+
+.form-container {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.textarea-input {
+  border: 1px solid #001858;
+  background-color: #fff;
+  width: 320px;
+  height: 50px;
+  padding: 10px;
+  margin: 150px auto 10px;
+  border-radius: 8px;
+}
+
+.submit-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 270px;
+  height: 60px;
+  margin: 30px auto 80px;
+  border: none;
+  border-radius: 12px;
+  color: #001858;
+  background-color: #f582aec2;
+  font-size: 20px;
+  cursor: pointer; 
+  transition: opacity .1s, transform .1s;
+}
+
+.submit-button:hover {
+  background-color: #f582ae;
+}
+
+.submit-button:active {
+  transform: scale(.98);
+}
+
+/* RecipiDisplay */
+
+.content{
+  margin: 0 auto 20px;
+  padding: 5px 10px 20px 10px;
+  display: flex;
+  width: 350px;
+  height:auto;
+  background-color: #172c6628;
+  border-radius: 8px;
+}
+
+.content:hover {
+  border: 2px solid #172c6691;
+  background-color: #172c6641;
+  transition: opacity .1s, transform .1s;
+}
+
+.content:active {
+  transform: scale(.98);
+}
+
+.title {
+  font-size: 16px;
+  margin-top: 3px;
+  margin-bottom: 10px;
+}
+
+.content h2{
+  font-size: 16x;
+}
+
+/*MakingDisplay*/
+
+.recipe-image {
+  display: flex;
+  width: 350px;
+  margin: 10px auto;
+}
+
+.making-container {
+  margin: 50px auto 50px;
+  width: 350px;
+
+}
+
+.title-jp{
+  margin: 5px auto;
+  padding: 5px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 700;
+  font-size: 16x;
+  border-bottom: 1px solid #001858;
+}
+
+.making-container p {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.making-container ul {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.making-container ol {
+  margin-bottom: 80px;
+  font-size: 15px;
+}
+
+.ingredients-list li {
+  margin-bottom: 1px;
+}
+
+.process-list li {
+  margin-bottom: 10px;
+}
+
+/* MusicGenerateButton */
+
+.music-generate-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 270px;
+  height: 60px;
+  margin: 30px auto 50px;
+  border: none;
+  border-radius: 12px;
+  color: #001858;
+  background-color: #f582aec2;
+  font-size: 20px;
+  cursor: pointer; 
+  transition: opacity .1s, transform .1s;
+}
+
+.music-generate-button:hover {
+  background-color: #f582ae;
+}
+
+.music-generate-button:active {
+  transform: scale(.98);
+}
+
+/* MusicPlayer */
+
+
+
+audio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto 100px;
+}
+

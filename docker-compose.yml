@@ -1,0 +1,51 @@
+services:
+  api:
+    container_name: python-api
+    build:
+      context: .
+      dockerfile: ./docker/backend/Dockerfile
+    volumes:
+      - ./backend:/app
+      - ~/.aws/:/root/.aws
+    ports:
+      - 8000:8000
+    tty: true
+    env_file:
+      - ./backend/.env
+    environment:
+      - TZ=Asia/Tokyo
+  front:
+    container_name: react-front
+    build:
+      context: .
+      target: dev
+      dockerfile: ./docker/react/Dockerfile
+    volumes:
+      - type: bind
+        source: ./react
+        target: /app
+      - type: volume
+        source: node-modules-volume
+        target: /src/node_modules
+    ports:
+      - 5173:5173
+      - 4173:4173
+    tty: true
+    env_file:
+      - ./react/.env
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+  suno:
+    container_name: suno
+    build:
+      context: .
+      dockerfile: ./docker/suno/Dockerfile
+    volumes:
+      - ./suno_api:/app
+    env_file:
+      - ./suno_api/.env
+    command: uvicorn api:app --host 0.0.0.0 --port 8080
+    ports:
+      - 8080:8080
+volumes:
+  node-modules-volume:

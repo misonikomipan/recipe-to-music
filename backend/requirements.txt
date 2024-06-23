@@ -1,0 +1,6 @@
+pillow
+fastapi
+uvicorn
+groq
+pydantic
+boto3
